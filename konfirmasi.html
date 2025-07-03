@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pesanan</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #27ae60;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        /* New styles for individual address inputs */
+        .address-group {
+            text-align: left; /* Align labels and inputs to the left within the group */
+            margin-bottom: 15px;
+            width: 90%; /* Match width of previous textarea */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .address-group label {
+            display: block; /* Make label take its own line */
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .address-group input[type="text"] {
+            width: 100%; /* Full width within its container */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        a.btn-wa {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-top: 20px; /* Add margin-top to separate from address fields */
+        }
+        a.btn-wa:hover {
+            background: #1ebe5d;
+        }
+        .btn-home {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .btn-home:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Pesanan Diterima!</h1>
+        <p>Terima kasih telah berbelanja di Clipedia.<br>Silakan lanjutkan konfirmasi pesanan via WhatsApp.</p>
+        
+        <div class="address-group">
+            <label for="provinceInput">Provinsi:</label>
+            <input type="text" id="provinceInput" placeholder="Contoh: Jambi">
+        </div>
+        <div class="address-group">
+            <label for="cityInput">Kota/Kabupaten:</label>
+            <input type="text" id="cityInput" placeholder="Contoh: Kota Jambi">
+        </div>
+        <div class="address-group">
+            <label for="districtInput">Kecamatan:</label>
+            <input type="text" id="districtInput" placeholder="Contoh: Jelutung">
+        </div>
+        <div class="address-group">
+            <label for="subDistrictInput">Kelurahan:</label>
+            <input type="text" id="subDistrictInput" placeholder="Contoh: Kebun Handil">
+        </div>
+        <div class="address-group">
+            <label for="rtRwInput">RT/RW:</label>
+            <input type="text" id="rtRwInput" placeholder="Contoh: 001/002">
+        </div>
+        <div class="address-group">
+            <label for="streetInput">Nama Jalan & Nomor Rumah:</label>
+            <input type="text" id="streetInput" placeholder="Contoh: Jl. Sudirman No. 123">
+        </div>
+
+        <a class="btn-wa" id="whatsappLink" target="_blank">Konfirmasi via WhatsApp</a>
+        <a class="btn-home" href="index.html">Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lastOrder = JSON.parse(localStorage.getItem("lastOrder")) || [];
+            const whatsappLink = document.getElementById("whatsappLink");
+            
+            // Get references to all new address input fields
+            const provinceInput = document.getElementById("provinceInput");
+            const cityInput = document.getElementById("cityInput");
+            const districtInput = document.getElementById("districtInput");
+            const subDistrictInput = document.getElementById("subDistrictInput");
+            const rtRwInput = document.getElementById("rtRwInput");
+            const streetInput = document.getElementById("streetInput");
+
+            // Function to construct and update the WhatsApp link
+            function updateWhatsAppLink() {
+                let pesanWhatsapp = "Halo admin Clipedia, saya ingin konfirmasi pesanan berikut:\n\n";
+                let totalBelanja = 0; // Initialize total spending
+
+                if (lastOrder.length > 0) {
+                    lastOrder.forEach((item, i) => {
+                        pesanWhatsapp += `${i + 1}. ${item.nama} - Rp ${item.harga.toLocaleString('id-ID')}\n`;
+                        totalBelanja += item.harga; // Add item price to total
+                    });
+                    
+                    // Add total spending to the message
+                    pesanWhatsapp += `\nTotal Belanja: Rp ${totalBelanja.toLocaleString('id-ID')}\n`;
+
+                } else {
+                    pesanWhatsapp += "Saya baru saja melakukan checkout, tetapi detail pesanan tidak tersedia. Mohon bantuannya.";
+                }
+
+                // Construct the structured address for the WhatsApp message
+                let addressDetails = [];
+                const street = streetInput.value.trim();
+                const rtRw = rtRwInput.value.trim();
+                const subDistrict = subDistrictInput.value.trim();
+                const district = districtInput.value.trim();
+                const city = cityInput.value.trim();
+                const province = provinceInput.value.trim();
+
+                if (street) addressDetails.push(`Jalan: ${street}`);
+                if (rtRw) addressDetails.push(`RT/RW: ${rtRw}`);
+                if (subDistrict) addressDetails.push(`Kelurahan: ${subDistrict}`);
+                if (district) addressDetails.push(`Kecamatan: ${district}`);
+                if (city) addressDetails.push(`Kota/Kabupaten: ${city}`);
+                if (province) addressDetails.push(`Provinsi: ${province}`);
+
+                if (addressDetails.length > 0) {
+                    pesanWhatsapp += `\nAlamat Pengiriman:\n${addressDetails.join('\n')}\n`;
+                } else {
+                    pesanWhatsapp += "\n[Penting: Harap lengkapi detail alamat pengiriman Anda!]\n";
+                }
+                
+                pesanWhatsapp += "\nMohon diproses ya!";
+
+                const encodedPesan = encodeURIComponent(pesanWhatsapp);
+                const waLink = `https://wa.me/6282297580051?text=${encodedPesan}`;
+                whatsappLink.href = waLink;
+            }
+
+            // Initial call to set the link when the page loads
+            updateWhatsAppLink();
+
+            // Add event listeners to all address input fields to update the link
+            provinceInput.addEventListener('input', updateWhatsAppLink);
+            cityInput.addEventListener('input', updateWhatsAppLink);
+            districtInput.addEventListener('input', updateWhatsAppLink);
+            subDistrictInput.addEventListener('input', updateWhatsAppLink);
+            rtRwInput.addEventListener('input', updateWhatsAppLink);
+            streetInput.addEventListener('input', updateWhatsAppLink);
+
+            // Optional: Clear lastOrder from localStorage after generating the WA link (depends on desired behavior)
+            // localStorage.removeItem("lastOrder");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipedia - Toko Online Termurah Sejambi Raya!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="#hero">Clipedia</a></h1>
+            <ul>
+                <li><a href="#produk">Produk</a></li>
+                <li><a href="#tentang-kami">Tentang Kami</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="keranjang.html">Keranjang <span id="cart-count" class="cart-count">0</span></a></li>
+                <li><a href="stock.html">Stok Produk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h2>Selamat Datang di Clipedia</h2>
+            <p>Temukan produk-produk terbaik dengan harga menarik dan kualitas terjamin!</p>
+            <a href="#produk" class="button">Lihat Produk</a>
+        </section>
+
+        <section id="produk">
+            <h2>Produk Unggulan</h2>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/ijo-1.webp" alt="Sepatu Adidas Adizero Evo SL warna hijau, tampilan samping.">
+                            <img src="gambar/ijo-2.webp" alt="Sepatu Adidas Adizero Evo SL warna hijau, tampilan depan-samping.">
+                            <img src="gambar/ijo-3.webp" alt="Sol bawah sepatu Adidas Adizero Evo SL warna hijau.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Evo SL Hijau</h3>
+                        <p class="price">Rp 2.300.000</p>
+                        <p class="description"> Sepatu Running Adidas Adizero Evo SL Hijau</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Evo SL Hijau', 2300000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Evo SL Hijau', 2300000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/hitam-1.webp" alt="Sepatu Adidas Adizero Evo SL warna hitam, tampilan samping.">
+                            <img src="gambar/hitam-2.webp" alt="Sepatu Adidas Adizero Evo SL warna hitam, tampilan depan.">
+                            <img src="gambar/hitam-3.webp" alt="Sol bawah sepatu Adidas Adizero Evo SL warna hitam.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Evo SL</h3>
+                        <p class="price">Rp 2.300.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero Evo SL Hitam</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Evo SL Hitam', 2300000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Evo SL Hitam', 2300000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/adios-8-itam-(1).webp" alt="Sepatu Adidas Adizero Adios 8 warna hitam, tampilan samping.">
+                            <img src="gambar/adios-8-itam-(2).webp" alt="Sepatu Adidas Adizero Adios 8 warna hitam, tampilan depan-samping.">
+                            <img src="gambar/adios-8-itam-(3).webp" alt="Sol bawah sepatu Adidas Adizero Adios 8 warna hitam.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Adios 8 hitam</h3>
+                        <p class="price">Rp 2.000.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero Adios 8 hitam </p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Adios 8 hitam', 2000000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Adios 8 hitam', 2000000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/sl-2-ungu-(1).webp" alt="Sepatu Adidas Adizero Evo SL warna ungu, tampilan samping.">
+                            <img src="gambar/sl-2-ungu-(2).webp" alt="Sepatu Adidas Adizero Evo SL warna ungu, tampilan depan.">
+                            <img src="gambar/sl-2-ungu-(3).webp" alt="Sol bawah sepatu Adidas Adizero Evo SL warna ungu.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Evo SL Ungu</h3>
+                        <p class="price">Rp 2.200.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero Evo SL Ungu</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Evo SL Ungu', 2200000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Evo SL Ungu', 2200000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/putih-1.webp" alt="Sepatu Adidas Adizero Evo SL warna putih, tampilan samping.">
+                            <img src="gambar/putih-2.webp" alt="Sepatu Adidas Adizero Evo SL warna putih, tampilan depan.">
+                            <img src="gambar/putih-3.webp" alt="Sol bawah sepatu Adidas Adizero Evo SL warna putih.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Evo SL Putih</h3>
+                        <p class="price">Rp 2.450.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero Evo SL Putih</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Evo SL Putih', 2450000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Evo SL Putih', 2450000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/rc-4-(1).webp" alt="Sepatu Adidas Adizero RC 4 warna putih, tampilan samping.">
+                            <img src="gambar/rc-4-(2).webp" alt="Sepatu Adidas Adizero RC 4 warna putih, tampilan depan.">
+                            <img src="gambar/rc-4-(3).webp" alt="Sol bawah sepatu Adidas Adizero RC 4 warna putih.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero RC 4 Putih</h3>
+                        <p class="price">Rp 1.500.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero RC 4</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero RC 4 Putih', 1500000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero RC 4 Putih', 1500000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/boston-13-(1).webp" alt="Sepatu Adidas Boston 13 warna putih, tampilan samping.">
+                            <img src="gambar/boston-13-(2).webp" alt="Sepatu Adidas Boston 13 warna putih, tampilan depan-samping.">
+                            <img src="gambar/boston-13-(4).webp" alt="Sol bawah sepatu Adidas Boston 13 warna putih.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Boston 13 Putih </h3>
+                        <p class="price">Rp 2.210.000</p>
+                        <p class="description">Sepatu Running Adidas Boston 13 </p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Boston 13 Putih ', 2210000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Boston 13 Putih ', 2210000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/adios-pro-3-hijau-(1).webp" alt="Sepatu Adidas Adizero Adios Pro 3 warna hijau, tampilan samping.">
+                            <img src="gambar/adios-pro-3-hijau-(2).webp" alt="Sepatu Adidas Adizero Adios Pro 3 warna hijau, tampilan depan.">
+                            <img src="gambar/adios-pro-3-hijau-(3).webp" alt="Sol bawah sepatu Adidas Adizero Adios Pro 3 warna hijau.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Adios Pro 3 Hijau</h3>
+                        <p class="price">Rp 3.600.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero Adios Pro 3 Hijau</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Adios Pro 3 Hijau', 3600000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Adios Pro 3 Hijau', 3600000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-slider">
+                        <div class="product-images" data-current="0">
+                            <img src="gambar/adios-pro-4-(1).webp" alt="Sepatu Adidas Adizero Adios Pro 4 warna merah, tampilan samping.">
+                            <img src="gambar/adios-pro-4-(2).webp" alt="Sepatu Adidas Adizero Adios Pro 4 warna merah, tampilan depan.">
+                            <img src="gambar/adios-pro-4-(3).webp" alt="Sol bawah sepatu Adidas Adizero Adios Pro 4 warna merah.">
+                        </div>
+                        <div class="slider-dots">
+                            <div class="dot active" onclick="changeSlide(this, 0)"></div>
+                            <div class="dot" onclick="changeSlide(this, 1)"></div>
+                            <div class="dot" onclick="changeSlide(this, 2)"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Adizero Adios Pro 4 Merah</h3>
+                        <p class="price">Rp 3.800.000</p>
+                        <p class="description">Sepatu Running Adidas Adizero Adios Pro 4 Merah</p>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="openProductModal('Adidas Adizero Adios Pro 4 Merah', 3800000, 'add')">+ Keranjang</button>
+                            <button class="buy-now" onclick="openProductModal('Adidas Adizero Adios Pro 4 Merah', 3800000, 'buy')">Beli Sekarang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Detail Produk</h2>
+                <h3 id="modalProductName"></h3>
+                <p id="modalProductPrice"></p>
+                <div id="modalProductStock"></div>
+                <div id="sizeSelection">
+                    <label for="productSize">Pilih Ukuran:</label>
+                    <select id="productSize"></select>
+                </div>
+                <button id="modalAddToCartBtn" class="add-to-cart">Tambah ke Keranjang</button>
+                <button id="modalBuyNowBtn" class="buy-now">Beli Sekarang</button>
+            </div>
+        </div>
+        
+        <section id="tentang-kami">
+            <h2>Tentang Clipedia</h2>
+            <p>Clipedia adalah toko online terkemuka di Jambi yang menyediakan berbagai macam sepatu running Adidas original dengan harga terjangkau. Kami berkomitmen untuk memberikan pengalaman belanja terbaik dengan produk berkualitas dan layanan pelanggan yang responsif.</p>
+            <p>Berdiri sejak tahun 2023, Clipedia telah melayani ratusan pelanggan setia yang mencari sepatu running idaman mereka. Dengan koleksi terbaru dan promo menarik setiap bulannya, kami pastikan Anda mendapatkan penawaran terbaik hanya di Clipedia.</p>
+        </section>
+
+        <section id="kontak">
+            <h2>Kontak Kami</h2>
+            <p>Jika Anda memiliki pertanyaan atau membutuhkan bantuan, jangan ragu untuk menghubungi kami:</p>
+            <p>Email: info@clipedia.com</p>
+            <p>Telepon: +62 812-3456-7890</p>
+            <p>Alamat: Jl. Contoh No. 123, Jambi, Indonesia</p>
+            <p>Jam Operasional: Senin - Jumat, 09:00 - 17:00 WIB</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Clipedia. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const productStock = {
+            "Adidas Adizero Evo SL Hijau": {
+                ukuran: ["40", "41", "42", "43", "44", "45"],
+                stok: {
+                    "40": 5,
+                    "41": 7,
+                    "42": 10,
+                    "43": 8,
+                    "44": 4,
+                    "45": 2
+                }
+            },
+            "Adidas Adizero Evo SL Hitam": {
+                ukuran: ["39", "40", "41", "42", "43", "44"],
+                stok: {
+                    "39": 3,
+                    "40": 6,
+                    "41": 9,
+                    "42": 12,
+                    "43": 7,
+                    "44": 1
+                }
+            },
+            "Adidas Adizero Adios 8 hitam": {
+                ukuran: ["40.5", "41", "42.5", "43", "44.5"],
+                stok: {
+                    "40.5": 2,
+                    "41": 5,
+                    "42.5": 8,
+                    "43": 6,
+                    "44.5": 0 // Stok habis
+                }
+            },
+            "Adidas Adizero Evo SL Ungu": {
+                ukuran: ["38", "39", "40", "41", "42"],
+                stok: {
+                    "38": 4,
+                    "39": 6,
+                    "40": 10,
+                    "41": 5,
+                    "42": 3
+                }
+            },
+            "Adidas Adizero Evo SL Putih": {
+                ukuran: ["40", "41", "42", "43", "44"],
+                stok: {
+                    "40": 7,
+                    "41": 9,
+                    "42": 5,
+                    "43": 11,
+                    "44": 3
+                }
+            },
+            "Adidas Adizero RC 4 Putih": {
+                ukuran: ["39", "40", "41", "42", "43"],
+                stok: {
+                    "39": 1, // Stok rendah
+                    "40": 3,
+                    "41": 6,
+                    "42": 2, // Stok rendah
+                    "43": 0 // Stok habis
+                }
+            },
+            "Adidas Boston 13 Putih ": { // Perhatikan spasi di akhir nama produk ini
+                ukuran: ["40", "41.5", "42", "43", "44"],
+                stok: {
+                    "40": 5,
+                    "41.5": 8,
+                    "42": 10,
+                    "43": 4,
+                    "44": 7
+                }
+            },
+            "Adidas Adizero Adios Pro 3 Hijau": {
+                ukuran: ["40", "41", "42", "43"],
+                stok: {
+                    "40": 3,
+                    "41": 5,
+                    "42": 7,
+                    "43": 2
+                }
+            },
+            "Adidas Adizero Adios Pro 4 Merah": {
+                ukuran: ["40.5", "41", "42.5", "43"],
+                stok: {
+                    "40.5": 2,
+                    "41": 4,
+                    "42.5": 6,
+                    "43": 1
+                }
+            }
+        };
+
+        const productModal = document.getElementById('productModal');
+        const closeButton = document.querySelector('.close-button');
+        const modalProductName = document.getElementById('modalProductName');
+        const modalProductPrice = document.getElementById('modalProductPrice');
+        const modalProductStock = document.getElementById('modalProductStock');
+        const productSizeSelect = document.getElementById('productSize');
+        const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
+        const modalBuyNowBtn = document.getElementById('modalBuyNowBtn');
+
+        let currentProduct = null;
+        let currentPrice = 0;
+        let currentAction = '';
+
+        function openProductModal(productName, price, action) {
+            currentProduct = productName;
+            currentPrice = price;
+            currentAction = action;
+
+            modalProductName.textContent = productName;
+            modalProductPrice.textContent = `Rp ${price.toLocaleString('id-ID')}`;
+            
+            // Clear previous sizes
+            productSizeSelect.innerHTML = '';
+            modalProductStock.innerHTML = '';
+
+            const stockData = productStock[productName];
+            if (stockData) {
+                stockData.ukuran.forEach(size => {
+                    const option = document.createElement('option');
+                    option.value = size;
+                    option.textContent = `Ukuran ${size} EU`;
+                    productSizeSelect.appendChild(option);
+                });
+                updateStockDisplay(productName, productSizeSelect.value); // Initial stock display
+            } else {
+                modalProductStock.textContent = "Informasi stok tidak tersedia.";
+            }
+
+            // Update button text and functionality
+            if (action === 'add') {
+                modalAddToCartBtn.style.display = 'inline-block';
+                modalBuyNowBtn.style.display = 'none';
+            } else {
+                modalAddToCartBtn.style.display = 'none';
+                modalBuyNowBtn.style.display = 'inline-block';
+            }
+
+            productModal.style.display = 'block';
+        }
+
+        function updateStockDisplay(productName, selectedSize) {
+            const stockData = productStock[productName];
+            if (stockData && stockData.stok[selectedSize] !== undefined) {
+                const stockAmount = stockData.stok[selectedSize];
+                if (stockAmount > 5) {
+                    modalProductStock.innerHTML = `Stok: <span style="color: green; font-weight: bold;">Tersedia (${stockAmount})</span>`;
+                } else if (stockAmount > 0) {
+                    modalProductStock.innerHTML = `Stok: <span style="color: orange; font-weight: bold;">Stok Rendah (${stockAmount})</span>`;
+                } else {
+                    modalProductStock.innerHTML = `Stok: <span style="color: red; font-weight: bold;">Habis</span>`;
+                }
+            } else {
+                modalProductStock.textContent = "Stok tidak ditemukan untuk ukuran ini.";
+            }
+        }
+
+        productSizeSelect.addEventListener('change', (event) => {
+            if (currentProduct) {
+                updateStockDisplay(currentProduct, event.target.value);
+            }
+        });
+
+        closeButton.addEventListener('click', () => {
+            productModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === productModal) {
+                productModal.style.display = 'none';
+            }
+        });
+
+        modalAddToCartBtn.addEventListener('click', () => {
+            const selectedSize = productSizeSelect.value;
+            const stockAmount = productStock[currentProduct].stok[selectedSize];
+
+            if (stockAmount > 0) {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                cart.push({ nama: currentProduct, harga: currentPrice, ukuran: selectedSize });
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert("Produk berhasil ditambahkan ke keranjang!");
+                updateCartCount();
+                productModal.style.display = 'none';
+            } else {
+                alert("Maaf, stok untuk ukuran ini sudah habis.");
+            }
+        });
+
+        modalBuyNowBtn.addEventListener('click', () => {
+            const selectedSize = productSizeSelect.value;
+            const stockAmount = productStock[currentProduct].stok[selectedSize];
+
+            if (stockAmount > 0) {
+                // Simpan sebagai pesanan instan, bukan keranjang
+                let lastOrder = [{ nama: currentProduct, harga: currentPrice, ukuran: selectedSize }];
+                localStorage.setItem("lastOrder", JSON.stringify(lastOrder));
+                alert("Terima kasih! Pesanan Anda sedang diproses.");
+                window.location.href = "konfirmasi.html";
+            } else {
+                alert("Maaf, stok untuk ukuran ini sudah habis.");
+            }
+        });
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart-count").textContent = cart.length;
+        }
+
+        function changeSlide(dot, index) {
+            const slider = dot.closest(".product-slider");
+            const imagesContainer = slider.querySelector(".product-images");
+            imagesContainer.style.transform = `translateX(-${index * 100}%)`;
+
+            const dots = slider.querySelectorAll(".dot");
+            dots.forEach(d => d.classList.remove("active"));
+            dot.classList.add("active");
+        }
+
+        // Jalankan saat DOM selesai dimuat
+        document.addEventListener("DOMContentLoaded", function () {
+            updateCartCount();
+
+            // Auto-slide logic
+            const sliders = document.querySelectorAll(".product-slider");
+            sliders.forEach(slider => {
+                const imagesContainer = slider.querySelector(".product-images");
+                const images = imagesContainer.querySelectorAll("img");
+                const dots = slider.querySelectorAll(".dot");
+                let current = 0;
+
+                if (slider.dataset.intervalId) {
+                    clearInterval(parseInt(slider.dataset.intervalId));
+                }
+
+                const intervalId = setInterval(() => {
+                    current = (current + 1) % images.length;
+                    imagesContainer.style.transform = `translateX(-${current * 100}%)`;
+
+                    dots.forEach(dot => dot.classList.remove("active"));
+                    if (dots[current]) dots[current].classList.add("active");
+                }, 2000);
+                slider.dataset.intervalId = intervalId;
+            });
+        });
+    </script>
+</body>
+</html>

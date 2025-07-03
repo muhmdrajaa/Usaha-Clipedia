@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stok Produk Clipedia</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* Gaya dasar dari keranjang.html bisa dipakai atau disesuaikan */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #ffffff;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px; /* Lebarkan sedikit untuk tabel stok */
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgb(230, 227, 227);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd; /* Border untuk setiap sel */
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .stock-available {
+            color: green;
+            font-weight: bold;
+        }
+        .stock-low {
+            color: orange;
+            font-weight: bold;
+        }
+        .stock-empty {
+            color: red;
+            font-weight: bold;
+        }
+        .btn-back-home {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-back-home:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Informasi Stok Produk Clipedia</h1>
+    </header>
+
+    <div class="container">
+        <h2>Daftar Ketersediaan Produk</h2>
+
+        <table id="stock-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama Produk</th>
+                    <th>Ukuran Tersedia (EU)</th>
+                    <th>Jumlah Stok</th>
+                    <th>Status Stok</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+
+        <a href="index.html" class="btn-back-home">Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        // Data stok produk (Anda bisa menambahkan atau mengubah data ini)
+        const productStock = [
+            {
+                nama: "Adidas Adizero Evo SL Hijau",
+                ukuran: ["40", "41", "42", "43", "44", "45"],
+                stok: {
+                    "40": 5,
+                    "41": 7,
+                    "42": 10,
+                    "43": 8,
+                    "44": 4,
+                    "45": 2
+                }
+            },
+            {
+                nama: "Adidas Adizero Evo SL Hitam",
+                ukuran: ["39", "40", "41", "42", "43", "44"],
+                stok: {
+                    "39": 3,
+                    "40": 6,
+                    "41": 9,
+                    "42": 12,
+                    "43": 7,
+                    "44": 1
+                }
+            },
+            {
+                nama: "Adidas Adizero Adios 8 Hitam",
+                ukuran: ["40.5", "41", "42.5", "43", "44.5"],
+                stok: {
+                    "40.5": 2,
+                    "41": 5,
+                    "42.5": 8,
+                    "43": 6,
+                    "44.5": 0 // Stok habis
+                }
+            },
+            {
+                nama: "Adidas Adizero Evo SL Ungu",
+                ukuran: ["38", "39", "40", "41", "42"],
+                stok: {
+                    "38": 4,
+                    "39": 6,
+                    "40": 10,
+                    "41": 5,
+                    "42": 3
+                }
+            },
+            {
+                nama: "Adidas Adizero Evo SL Putih",
+                ukuran: ["40", "41", "42", "43", "44"],
+                stok: {
+                    "40": 7,
+                    "41": 9,
+                    "42": 5,
+                    "43": 2,
+                    "44": 0 // Stok habis
+                }
+            },
+            {
+                nama: "Adidas Adizero RC 4 Putih",
+                ukuran: ["39.5", "40.5", "41.5", "42.5"],
+                stok: {
+                    "39.5": 3,
+                    "40.5": 5,
+                    "41.5": 1, // Stok rendah
+                    "42.5": 4
+                }
+            },
+            {
+                nama: "Adidas Boston 13 Putih",
+                ukuran: ["41", "42", "43", "44"],
+                stok: {
+                    "41": 6,
+                    "42": 8,
+                    "43": 4,
+                    "44": 2
+                }
+            },
+            {
+                nama: "Adidas Adizero Adios Pro 3 Hijau",
+                ukuran: ["40", "41", "42", "43"],
+                stok: {
+                    "40": 2,
+                    "41": 3,
+                    "42": 1, // Stok rendah
+                    "43": 0 // Stok habis
+                }
+            },
+            {
+                nama: "Adidas Adizero Adios Pro 4 Merah",
+                ukuran: ["40.5", "41.5", "42.5"],
+                stok: {
+                    "40.5": 1, // Stok rendah
+                    "41.5": 2,
+                    "42.5": 1
+                }
+            },
+            {
+                nama: "Adidas Adizero Boston 10 Legacy Indigo",
+                ukuran: ["39", "40", "41", "42"],
+                stok: {
+                    "39": 4,
+                    "40": 6,
+                    "41": 5,
+                    "42": 3
+                }
+            }
+            // Tambahkan produk lain di sini sesuai kebutuhan
+        ];
+
+        function renderStockTable() {
+            const tbody = document.querySelector("#stock-table tbody");
+            tbody.innerHTML = ""; // Kosongkan tabel sebelum merender ulang
+
+            productStock.forEach((product, index) => {
+                let totalStockForProduct = 0;
+                let sizesAndStock = [];
+
+                // Kumpulkan informasi ukuran dan stok untuk baris ini
+                product.ukuran.forEach(size => {
+                    const stockAmount = product.stok[size] !== undefined ? product.stok[size] : 0;
+                    totalStockForProduct += stockAmount;
+                    sizesAndStock.push(`${size} (${stockAmount})`);
+                });
+
+                let statusClass = "stock-available";
+                let statusText = "Tersedia";
+
+                if (totalStockForProduct === 0) {
+                    statusClass = "stock-empty";
+                    statusText = "Habis";
+                } else if (totalStockForProduct <= 5) { // Atur ambang batas stok rendah
+                    statusClass = "stock-low";
+                    statusText = "Stok Rendah";
+                }
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${product.nama}</td>
+                    <td>${sizesAndStock.join(', ')}</td>
+                    <td>${totalStockForProduct}</td>
+                    <td class="${statusClass}">${statusText}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Panggil renderStockTable saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", renderStockTable);
+    </script>
+</body>
+</html>

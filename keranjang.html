@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgb(230, 227, 227);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn-hapus, .btn-checkout, .btn-back { /* Tambahkan .btn-back */
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px; /* Tambahkan margin atas */
+        }
+        .btn-checkout {
+            background-color: #27ae60;
+            float: right;
+            margin-left: 10px; /* Jarak dari tombol kembali */
+        }
+        .btn-back { /* Gaya untuk tombol kembali */
+            background-color: #555;
+            float: left;
+        }
+        .btn-hapus:hover, .btn-checkout:hover, .btn-back:hover {
+            opacity: 0.9;
+        }
+        #total-harga {
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Keranjang Belanja Anda</h1>
+    </header>
+    <div class="container">
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+        <h3>Total: Rp <span id="total-harga">0</span></h3>
+        <button class="btn-back" onclick="history.back()">Kembali Belanja</button> <button class="btn-checkout" onclick="checkout()">Checkout</button>
+    </div>
+
+    <script>
+        // Ambil data keranjang dari localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function renderCart() {
+            const tbody = document.querySelector("#cart-table tbody");
+            const totalHargaElem = document.getElementById("total-harga");
+            tbody.innerHTML = ""; // Kosongkan tabel sebelum merender ulang
+            let total = 0;
+
+            if (cart.length === 0) {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td colspan="3" style="text-align: center; padding: 20px;">Keranjang Anda kosong.</td>`;
+                tbody.appendChild(row);
+            } else {
+                cart.forEach((item, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${item.nama}</td>
+                        <td>Rp ${item.harga.toLocaleString('id-ID')}</td> <td><button class="btn-hapus" onclick="hapusItem(${index})">Hapus</button></td>
+                    `;
+                    tbody.appendChild(row);
+                    total += item.harga;
+                });
+            }
+            totalHargaElem.textContent = total.toLocaleString('id-ID'); // Format angka ke IDR
+        }
+
+        function hapusItem(index) {
+            cart.splice(index, 1); // Hapus item dari array cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Perbarui localStorage
+            renderCart(); // Render ulang keranjang
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Keranjang masih kosong!");
+                return;
+            }
+
+            // Simpan data keranjang saat ini ke 'lastOrder' sebelum menghapusnya dari 'cart'
+            localStorage.setItem("lastOrder", JSON.stringify(cart));
+            localStorage.removeItem("cart"); // Hapus keranjang setelah checkout
+
+            alert("Terima kasih! Pesanan Anda sedang diproses.");
+            window.location.href = "konfirmasi.html"; // Arahkan ke halaman konfirmasi
+        }
+
+        // Panggil renderCart saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", renderCart);
+    </script>
+</body>
+</html>
